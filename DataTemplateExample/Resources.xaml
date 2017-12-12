@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DataTemplateExample"
+                    xmlns:components="clr-namespace:DataTemplateExample.Components">
+    <local:ColorComponentToBrushConverter x:Key="ColorComponentToBrushConverter" />
+    
+    <DataTemplate DataType="{x:Type components:SfpComponent}">
+        <StackPanel Orientation="Vertical">
+            <Label>SFP module</Label>
+            <StackPanel Orientation="Horizontal">
+                <Label FontWeight="Bold">ID:</Label>
+                <Label Content="{Binding Id}" />
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type components:EthernetComponent}">
+        <StackPanel Orientation="Vertical">
+            <Label>Ethernet module</Label>
+            <StackPanel Orientation="Horizontal">
+                <Label FontWeight="Bold">ID:</Label>
+                <Label Content="{Binding Id}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label FontWeight="Bold">IPv4 address:</Label>
+                <Label Content="{Binding Ipv4Address}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label FontWeight="Bold">MAC address:</Label>
+                <Label Content="{Binding MacAddress}" />
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type components:ColorComponent}">
+        <StackPanel Orientation="Vertical" Background="{Binding Converter={StaticResource ColorComponentToBrushConverter}}">
+            <Label>Color module</Label>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="DataTemplateExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataTemplateExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800">
+    <d:Window.DataContext>
+        <local:MainModel />
+    </d:Window.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <local:CreateComponentControl Grid.Row="0" DataContext="{Binding CreateComponentModel}"/>
+
+        <ListBox Grid.Row="1" ItemsSource="{Binding Components}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+    </Grid>
+</Window>
